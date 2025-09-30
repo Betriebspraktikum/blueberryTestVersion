@@ -1,0 +1,50 @@
+[
+    {
+        "productName": "0",
+        "author": "Morten",
+        "score": 4,
+        "description": "gs"
+    },
+    {
+        "productName": "0",
+        "author": "Max Mustermann",
+        "score": 3,
+        "description": "was ganz oke"
+    },
+    {
+        "productName": "1",
+        "author": "TIm",
+        "score": 2,
+        "description": "Die BLaubeere 0 war besser"
+    },
+    {
+        "productName": "0",
+        "author": "Max Mustermann",
+        "score": 4,
+        "description": "ajax2"
+    },
+    {
+        "productName": "0",
+        "author": "Max Mustermann",
+        "score": 4,
+        "description": "ajax2"
+    },
+    {
+        "productName": "0",
+        "author": "Max Musterfrau",
+        "score": 5,
+        "description": "mainsen"
+    },
+    {
+        "productName": "0",
+        "author": "Max Mustersohn",
+        "score": 1,
+        "description": "moinse"
+    },
+    {
+        "productName": "0",
+        "author": "Max",
+        "score": 4,
+        "description": "allo"
+    }
+]

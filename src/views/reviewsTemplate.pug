@@ -1,0 +1,9 @@
+div(class="product_info col-12" id="reviews")
+    h2#reviews Rezensionen
+each review, index in reviews
+    div(class="review col-md-12 col-lg-12 col-xl-6 col-6")
+        article
+            h3 Rezension #{index + 1}
+            h4 #{review.author}
+            p #{review.score}
+            p #{review.description}

@@ -1,0 +1,133 @@
+doctype html
+html(lang="de")
+
+head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(property="og:title" content="Product detail")
+    meta(property="og:type" content="article")
+    meta(property="og:url" content="detail.html")
+    meta(property="og:image" content="./../public/images/blueberry-illustration-7372629_1280.png")
+    meta(property="og:site_name" content="detailed info about Product")
+    meta(property="og:description" content="Awesome exclusive blueberry")
+
+    script(type="application/ld+json").
+        {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "Blueberry: 0",
+          "image": "./../public/images/blueberry-illustration-7372629_1280.png",
+          "description": "Die aller erste unserer legendären Blaubeeren",
+          "sku": "bb0",
+          "offers": {
+            "@type": "Offer",
+            "price": "36725465.43",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+
+    link(rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css")
+    link(rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css")
+    link(rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css")
+    
+    link(rel="stylesheet" href="./public/styles/style.css")
+
+    link(rel="stylesheet" media="(max-width: 767px)" href="./public/styles/mobile.css")
+
+    link(rel="stylesheet" media="(width >= 768px) and (width <= 991px)" href="./public/styles/tablet.css")
+
+    link(rel="stylesheet" media="(min-width: 992px)" href="./public/styles/pc.css")
+
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:ital,wght@0,300..900;1,300..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap")
+ 
+    script(src="public/scripts/script.js")
+    script(defer, src="public/scripts/client.js")
+
+    title Shop
+
+body
+    header.banner
+        a(href="./alleProdukte")
+            h1 Einzigartige Blaubeeren
+        nav.InPaNavigation
+            a(href="#product") Produkt
+            a(href="#discription") Beschreibung
+            a(href="#reviews") Rezensionen
+
+    main
+        section
+            h2#product Product
+            article
+                div(class="container grid-xl")
+                    div.columns
+                        div(class="product_highlights col-sm-12 col-md-4 col-lg-4 col-xl-6 col-6")
+                            h3(class="Produktbezeichner") Blaubeere: #{product.name}
+                            img(src="./../public/images/blueberry-illustration-7372629_1280.png", alt="blueberry illustration")
+                            img(src="./../public/images/productPicture2.jpg", alt="productPicture2")
+                            img(src="./../public/images/productPicture3.jpg", alt="productPicture3")
+
+
+                        div(class="product_info column col-xs-12 col-md-8 col-lg-4 col-xl-6 col-6")
+                            div.columns
+                                div(class="product_info col-lg-12 col-xl-12 col-12")
+                                    h3.discription Beschreibung
+                                div(class="product_info col-lg-12 col-xl-12 col-12")
+                                    p
+                                        b #{product.discription}
+                                div(class="product_info col-lg-12 col-xl-12 col-12")
+                                    p
+                                        b Preis: 
+                                        | #{product.priceEUR}
+                                div(class="product_info col-lg-12 col-xl-12 col-12")
+                                    p
+                                        b Mengeneinheit: 
+                                        | Stk
+                                div(class="product_info col-lg-12 col-xl-12 col-12")
+                                    p
+                                        b Preis(cent): 
+                                        | #{product.price}
+                                div(class="product_info col-lg-12 col-xl-12 col-12")
+                                    p
+                                        b Laberbestand: 
+                                        | #{product.quantity}
+                            div.columns#reviewsContainer
+                                - var reviews = reviews
+                                include reviewsTemplate
+                            button(class="btn btn-primary" onclick="document.querySelector('#rezension-modal').classList.add('active');") Rezension verfassen
+
+                            div(class="modal" id="rezension-modal")
+                                a(href="#close" class="modal-overlay" aria-label="Close" onclick="document.querySelector('#rezension-modal').classList.remove('active');")
+
+                                div(class="modal-container")
+                                    div(class="modal-header")
+                                        a(class="btn btn-clear float-right" aria-label="Close" onclick="document.querySelector('#rezension-modal').classList.remove('active');")
+                                        div(class="modal-title h5") Rezension verfassen
+
+                                            div(class="modal-body")
+                                                div(class="content")
+                                                    form(method="post" action="/addReview")
+                                                        input(type="hidden", name="index", value=index)
+                                                        input(type="hidden", name="productName", value=product.name)
+                                                        label(for="review-title") Author
+                                                        input(class="form-input" type="text" name="author" id="review-title" placeholder="Name des Author" value=author)
+
+                                                        label(for="review-stars") Score
+                                                        input(class="form-input" type="number" min=0 max=10 name="score" id="review-stars" placeholder="Rezension N von 10 Sternen")
+
+                                                        label(for="review-content") Description
+                                                        textarea(class="form-input" name="description" id="review-content" rows="5" placeholder="Schreibe hier deine Rezension...")
+                                                        div(class="modal-footer")
+                                                            label(for="ajax")
+                                                                span Per AJAX versenden: 
+                                                                input(id="ajax", type="checkbox", name="perAjax")
+                                                            button(type="button" class="btn btn-link" onclick="document.querySelector('#rezension-modal').classList.remove('active');") Abbrechen
+                                                            button(class="btn btn-primary" type="submit") Abschicken
+
+                        //div(class=snackbar id="errEmpty") Error: Leere Rezensionsfelder.
+                        //div(class=snackbar id="errScore") Error: Bewertungsgröße 0 - 10.
+    br
+    footer
+        p
+            span(id = "timeTag") | Real-Impressum-Not-Clickbait
+        button(class="scrollToTop") ^

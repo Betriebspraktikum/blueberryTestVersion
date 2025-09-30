@@ -1,0 +1,50 @@
+[
+    {
+        "name": "0",
+        "discription": "Die aller erste unserer legendären Blaubeeren",
+        "img": "./public/images/blueberry-illustration-7372629_1280.png",
+        "imgAlt": "blueberry illustration",
+        "quantity": 1,
+        "price": 3672546543
+    },
+    {
+        "name": "1",
+        "discription": "Die aller zweiteste unserer legendären Blaubeeren",
+        "img": "./public/images/blueberry-illustration-7372629_1280.png",
+        "imgAlt": "blueberry illustration",
+        "quantity": 1,
+        "price": 76345835
+    },
+    {
+        "name": "Justine",
+        "discription": "Justine is here as well. And in English for some reason.",
+        "img": "./public/images/blueberry-illustration-7372629_1280.png",
+        "imgAlt": "blueberry illustration",
+        "quantity": 1,
+        "price": 438765098
+    },
+    {
+        "name": "Pete",
+        "discription": "Pete ist halt Pete.",
+        "img": "./public/images/blueberry-illustration-7372629_1280.png",
+        "imgAlt": "blueberry illustration",
+        "quantity": 1,
+        "price": 975648763
+    },
+    {
+        "name": "Golgorotoa",
+        "discription": "Untergang aller die heute schon css verwenden",
+        "img": "./public/images/blueberry-illustration-7372629_1280.png",
+        "imgAlt": "blueberry illustration",
+        "quantity": 1,
+        "price": 76254
+    },
+    {
+        "name": "cheapest",
+        "discription": "das ist das güstigste modell",
+        "img": "./public/images/blueberry-illustration-7372629_1280.png",
+        "imgAlt": "blueberry illustration",
+        "quantity": 2,
+        "price": 200
+    }
+]
