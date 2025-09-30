@@ -1,4 +1,5 @@
 import express from 'express';
+import serverless from 'serverless-http';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import startpageRouter from './routes/startpageRouter.js';
@@ -18,6 +19,8 @@ app.use(bodyParser.json());
 app.use(startpageRouter);
 app.use(reviewRouter);
 
-app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
-});
+if (process.env.AWS_LAMBDA_RUNTIME_API === undefined) {
+    app.listen(process.env.PORT || 3000, () => console.log(`App available on http://localhost:3000`));
+} else {
+    module.exports.handler = serverless(app);
+}
